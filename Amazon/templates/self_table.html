@@ -1,0 +1,68 @@
+<!-- create_table.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Table</title>
+</head>
+<body>
+    <h1>Create Table</h1>
+    <form method="POST" action="/">
+        <label for="table_name">Table Name:</label>
+        <input type="text" id="table_name" name="table_name" required><br><br>
+
+        <label for="field_name">Field Name:</label>
+        <label for="field_type">Field Type:</label><br>
+
+        <div id="fields">
+            <input type="text" name="field_name" required>
+            <select name="field_type" required>
+                <option value="INT">INT</option>
+                <option value="VARCHAR(255)">VARCHAR(255)</option>
+                <option value="TEXT">TEXT</option>
+            </select><br>
+        </div>
+
+        <button type="button" onclick="addField()">Add Field</button><br><br>
+
+        <input type="submit" value="Create Table">
+    </form>
+
+    <script>
+        function addField() {
+            var fieldsDiv = document.getElementById('fields');
+
+            var fieldDiv = document.createElement('div');
+
+            var fieldNameInput = document.createElement('input');
+            fieldNameInput.type = 'text';
+            fieldNameInput.name = 'field_name';
+            fieldNameInput.required = true;
+
+            var fieldTypeSelect = document.createElement('select');
+            fieldTypeSelect.name = 'field_type';
+            fieldTypeSelect.required = true;
+
+            var intOption = document.createElement('option');
+            intOption.value = 'INT';
+            intOption.text = 'INT';
+            fieldTypeSelect.appendChild(intOption);
+
+            var varcharOption = document.createElement('option');
+            varcharOption.value = 'VARCHAR(255)';
+            varcharOption.text = 'VARCHAR(255)';
+            fieldTypeSelect.appendChild(varcharOption);
+
+            var textOption = document.createElement('option');
+            textOption.value = 'TEXT';
+            textOption.text = 'TEXT';
+            fieldTypeSelect.appendChild(textOption);
+
+            fieldDiv.appendChild(fieldNameInput);
+            fieldDiv.appendChild(fieldTypeSelect);
+
+            fieldsDiv.appendChild(fieldDiv);
+        }
+    </script>
+</body>
+</html>
